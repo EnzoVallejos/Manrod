@@ -1,5 +1,8 @@
-#codigo de testeo para probar las funciones que empleo en la libreria
 from Manrod import mr
 
-for i in range(100):
-	print(mr.randomLetter(typeL="uppercase"), end="")
+#pruebas realizadas de las nuevas funciones implemetadas el dia 05/12/2018 son correctas y se han soluccionado errores
+'''a = ["h", "o", "l", "a", "c", "o", "m", "o"]
+f = 2
+for f in range(1,16):
+	print(mr.rSortingList("calidad enlatada"))
+'''

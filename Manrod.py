@@ -29,7 +29,7 @@ _dict = [['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 
 		["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]]
 
 class mr:
-	"""Core v1.01 de la libreria Manrod"""
+	"""Core v1.01 llamado mr de la libreria Manrod"""
 	def __init__(self):
 		super().__init__()
 
@@ -49,3 +49,72 @@ class mr:
 			raise TypeError('Ingrese un tipo de letra correcta("lowercase", "uppercase" or "any"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TypeLetter")')
 
 		return lttrRandom
+
+	#Generacion de cadenas de texto aleatorias
+	def strOfLetters(typeL, **rangeL):
+		#miro si hay ingresado un rango si no lo hay le asigno uno aleatorio
+		strLetter = ""
+		try:
+			if rangeL == {}:
+				i = randint(2, 10)
+			else:
+				i = int(rangeL['rangeL'])
+
+		except ValueError:
+			raise ValueError('Ingrese un numero como rango no un texto. \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("Range")')
+
+		if typeL == 'lowercase':
+			for makeStr in range(0,i):
+				strLetter += _dict[0][randint(0, len(_dict[0]) - 1)]
+
+		#concadenacion con numeros significa "&number"
+		elif typeL == 'lowercase&number':
+			for makeStr in range(0,i):
+				#hago que elija aleatoriamente que elemento agregar si letra o numero
+				listInd = (0, 2)
+				randomList = listInd[randint(0,1)]
+
+				strLetter += _dict[randomList][randint(0, len(_dict[randomList]) - 1)]
+				
+		elif typeL == 'uppercase':
+			for makeStr in range(0,i):
+				strLetter += _dict[1][randint(0, len(_dict[1]) - 1)]
+
+		elif typeL == 'uppercase&number':
+			for makeStr in range(0,i):
+				#hago que elija aleatoriamente que elemento agregar si letra o numero
+				listInd = (1, 2)
+				randomList = listInd[randint(0,1)]
+
+				strLetter += _dict[randomList][randint(0, len(_dict[randomList]) - 1)]
+
+		elif typeL == 'any':
+			for makeStr in range(0,i):
+				listN = randint(0,1)
+				strLetter += _dict[listN][randint(0, len(_dict[listN]) - 1)]
+
+		elif typeL == 'any&number':
+			for makeStr in range(0,i):
+				#hago que elija aleatoriamente que elemento agregar si letra o numero
+				listInd = (0, 1, 2)
+				randomList = listInd[randint(0,2)]
+
+				strLetter += _dict[randomList][randint(0, len(_dict[randomList]) - 1)]
+
+		else:
+			raise TypeError('Ingrese un tipo de letra correcta("lowercase", "uppercase" y "any". O sus concadenaciones con "&number"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TypeLetter")')
+
+		return strLetter
+
+	#reordenamiento de una lista aleatoriamente
+	def rSortingList(lista):
+			if  str(lista).isdigit():
+				raise TypeError ('Ingrese un texto o una lista para su reordenamiento, no un numero. \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("rSortingList")')
+			
+			listFinal = []
+			longList = len(lista)
+			for i in lista:
+				indexRand = randint(0, longList - 1)
+				listFinal.insert(indexRand , i)
+
+			return listFinal
