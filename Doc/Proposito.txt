@@ -1,0 +1,6 @@
+Manrod = es "Random" al reves. Esto es asi por que esta generado por unas de las funciones
+que proporcionara la libreria
+
+
+Manrod va a ser una libreria de python que permitira hacer cualquier operacion random
+con letras, frases, etc.
