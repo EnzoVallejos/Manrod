@@ -5,4 +5,9 @@ from Manrod import mr
 f = 2
 for f in range(1,16):
 	print(mr.rSortingList("calidad enlatada"))
+
+	args = [i for i in kargs if i in ['dOutput', 'rangeF']] 
 '''
+
+for a in range(50):
+	print(mr.rTake("calidadenlatada", rangeF=4), end=" ")

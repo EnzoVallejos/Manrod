@@ -118,3 +118,57 @@ class mr:
 				listFinal.insert(indexRand , i)
 
 			return listFinal
+
+	#obtencion de un valor de una lista o un texto
+	#seguir trabajando en los demas, por si el usuario ingresa demas parametros
+	def rTake(rValor, **kargs):
+		#rangeIni, dOutput, rangeF
+		rangeIni = randint(0, len(rValor) - 1)
+		if kargs == {}:
+			menF = rValor[rangeIni]
+			return menF
+
+		#por si el argumento pasado es 'dOutput' o 'rangeF'
+		elif len(kargs) == 1:
+			args = [i for i in kargs if i in ['dOutput', 'rangeF']] 
+
+			if args == []:
+				raise TypeError('Ingrese un parametro correcto("dOutput" o "rangeF"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
+			
+			#si el argumento ingresado es 'dOutput' y el parametro es 'text' o 'list'
+			if args[0] == 'dOutput' and kargs['dOutput'] in ['text', 'list']:
+				if kargs['dOutput'] == 'text':
+					rValor = str(rValor)
+					menF = rValor[rangeIni]
+				else:
+					if kargs['dOutput'] == 'list':
+						rValor = str(rValor)
+						menlist = [k for k in rValor]
+						menF = menlist[rangeIni: rangeIni + 1]
+				return menF			
+
+			else:
+				if args[0] == 'rangeF':
+					rangeF = kargs['rangeF']
+
+					#filtro de comprobacion de errores par saber si el rangoF es valido
+					if str(rangeF).isdigit() is not False:
+						if rangeF > len(rValor):
+							raise ValueError('El rango final ingresado es mas grande que la longitud de la cadena')
+					else:
+						raise ValueError('El rango final ingresado debe ser un numero no un texto.')
+
+					#por si rangeIni es mayor que el rangeF
+					if rangeIni > rangeF:
+						rangeIniNew = rangeIni
+						while rangeIniNew > rangeF:
+							rangeIniNew = randint(0, len(rValor) - 1)
+					else:
+						rangeIniNew = rangeIni
+
+					menF = rValor[rangeIniNew:rangeF]
+					return menF
+
+				else:
+					raise ValueError('Ingrese un valor correcto para los parametros ("dOutput" o "rangeF"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
+			
