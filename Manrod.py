@@ -120,9 +120,7 @@ class mr:
 			return listFinal
 
 	#obtencion de un valor de una lista o un texto
-	#seguir trabajando en los demas, por si el usuario ingresa demas parametros
 	def rTake(rValor, **kargs):
-		#rangeIni, dOutput, rangeF
 		rangeIni = randint(0, len(rValor) - 1)
 		if kargs == {}:
 			menF = rValor[rangeIni]
@@ -158,7 +156,6 @@ class mr:
 					else:
 						raise ValueError('El rango final ingresado debe ser un numero no un texto.')
 
-					#por si rangeIni es mayor que el rangeF
 					if rangeIni > rangeF:
 						rangeIniNew = rangeIni
 						while rangeIniNew > rangeF:
@@ -171,4 +168,45 @@ class mr:
 
 				else:
 					raise ValueError('Ingrese un valor correcto para los parametros ("dOutput" o "rangeF"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
+
+		#si hay 2 argumentos ingresados
+		elif len(kargs) == 2:
+			args = [i for i in kargs if i in ['rangeF', 'dOutput']]
 			
+			if  len(args) < 2:
+				raise TypeError('Ingrese parametros correctos ("dOutput" o "rangeF"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
+			else:
+				if args[1] == 'rangeF':
+					raise NameError('A ingresado los parametros de forma incorrecta. \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
+
+			if args[1] == 'dOutput' and kargs['dOutput'] in ['text', 'list']:
+				rangeF = kargs['rangeF']
+				dOutput = kargs['dOutput']
+			else:
+				raise ValueError('Ingrese un valor correcto para el parametro "dOutput". \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
+
+			if str(rangeF).isdigit() is not False:
+				if rangeF > len(rValor):
+					raise ValueError('El rango final ingresado es mas grande que la longitud de la cadena')
+			else:
+				raise ValueError('El rango final ingresado debe ser un numero no un texto.')
+
+			#filtros de comprobaciones
+			if rangeIni > rangeF:
+				rangeIniNew = rangeIni
+				while rangeIniNew > rangeF:
+					rangeIniNew = randint(0, len(rValor) - 1)
+			else:
+				rangeIniNew = rangeIni
+
+			menParcial = rValor[rangeIniNew:rangeF]
+
+			if kargs['dOutput'] == 'text':
+				menF = menParcial
+			else:
+				if kargs['dOutput'] == 'list':
+					rValor = str(rValor)
+					menlist = [k for k in menParcial]
+					menF = menlist
+			
+			return menF

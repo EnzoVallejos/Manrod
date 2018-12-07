@@ -10,4 +10,4 @@ for f in range(1,16):
 '''
 
 for a in range(50):
-	print(mr.rTake("calidadenlatada", rangeF=4), end=" ")
+	print(mr.rTake("calidadenlatada",rangeF=4, dOutput='list'))
