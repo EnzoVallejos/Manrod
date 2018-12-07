@@ -8,6 +8,4 @@ for f in range(1,16):
 
 	args = [i for i in kargs if i in ['dOutput', 'rangeF']] 
 '''
-
-for a in range(50):
-	print(mr.rTake("calidadenlatada",rangeF=4, dOutput='list'))
+mr.help("?")

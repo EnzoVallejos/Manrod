@@ -46,7 +46,7 @@ class mr:
 			lttrRandom = _dict[listN][randint(0, len(_dict[listN]) - 1)]
 
 		else:
-			raise TypeError('Ingrese un tipo de letra correcta("lowercase", "uppercase" or "any"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TypeLetter")')
+			raise TypeError('Ingrese un tipo de letra correcta("lowercase", "uppercase" or "any"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("typeL")')
 
 		return lttrRandom
 
@@ -102,7 +102,7 @@ class mr:
 				strLetter += _dict[randomList][randint(0, len(_dict[randomList]) - 1)]
 
 		else:
-			raise TypeError('Ingrese un tipo de letra correcta("lowercase", "uppercase" y "any". O sus concadenaciones con "&number"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TypeLetter")')
+			raise TypeError('Ingrese un tipo de letra correcta("lowercase", "uppercase" y "any". O sus concadenaciones con "&number"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("typeL")')
 
 		return strLetter
 
@@ -210,3 +210,15 @@ class mr:
 					menF = menlist
 			
 			return menF
+
+	def help(consulta):
+		if consulta == '?':
+			print('\n--help$all-- Las consultas que puede realizar aqui son: \n\nFunciones de la libreria:\n1."randomLetter"\n2."strOfLetters"\n3."strOfLetters"\n4."rSortingList"\n5."rTake"\n\nParametros que requieren las funciones: \n6."typeL"\n7."rangoF"\n8."dOutput"')
+
+		if consulta == 'randomLetter':
+			print('\n--help$randomLetter-- La funcion "randomLetter" devuelve una letra elegida aleatoriamente. A dicha funcion se le debe pasar el parametro "typeL"(para mas informacion leer la documentacion o colocar "mr.help("typeL")").')
+
+		if consulta == 'typeL':
+			print('\n--help$typeL-- El parametro "typeL" es requerido en las funciones "randomLetter" y "strOfLetters"; representa el tipo de letra que se utilizara para devolver el resultado final de la funcion.')
+			print('\nLos valores que se le pasan a este parametro son "lowercase", "uppercase" y "any", ademas de las concadenacion con numeros que se pueden hacer al resultado final en la funcion "strOfLetters" agregando a dichos parametros el "&number". Ej: typeL="uppercase&number".')
+			print('\n Al tipo de letra que hace referencia cada uno es:\n\n1."lowercase": Hace referencia a que el resultado retornado por la funcion va a ser en letras minusculas\n2."uppercase": Al igual que "lowercase", este devolvera el resultado en mayusculas.\n3."any": Este valor hace referencia a que el resultado sera cualquiera de los dos tipos de letras anteriores, el tipo de letra a usar sera elegido aleatoriamente.') 
