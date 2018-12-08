@@ -8,4 +8,4 @@ for f in range(1,16):
 
 	args = [i for i in kargs if i in ['dOutput', 'rangeF']] 
 '''
-mr.help("?")
+mr.help("rSortingList")

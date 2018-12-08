@@ -212,13 +212,37 @@ class mr:
 			return menF
 
 	def help(consulta):
-		if consulta == '?':
-			print('\n--help$all-- Las consultas que puede realizar aqui son: \n\nFunciones de la libreria:\n1."randomLetter"\n2."strOfLetters"\n3."strOfLetters"\n4."rSortingList"\n5."rTake"\n\nParametros que requieren las funciones: \n6."typeL"\n7."rangoF"\n8."dOutput"')
+		if consulta in ['?','randomLetter','strOfLetters','rSortingList','rTake','typeL','rangeF', 'rangeL','dOutput']:
+			if consulta == '?':
+				print('\n--help$all-- Las consultas que puede realizar aqui son: \n\nFunciones de la libreria:\n1."randomLetter"\n2."strOfLetters"\n3."rSortingList"\n4."rTake"\n\nParametros que requieren las funciones: \n5."typeL"\n6."rangoF"\n7."dOutput"\n8."rangeL"')
 
-		if consulta == 'randomLetter':
-			print('\n--help$randomLetter-- La funcion "randomLetter" devuelve una letra elegida aleatoriamente. A dicha funcion se le debe pasar el parametro "typeL"(para mas informacion leer la documentacion o colocar "mr.help("typeL")").')
+			#funciones de la libreria
+			if consulta == 'randomLetter':
+				print('\n--help$randomLetter-- La funcion "randomLetter" devuelve una letra elegida aleatoriamente. A dicha funcion se le debe pasar el parametro "typeL"(para mas informacion leer la documentacion o colocar "mr.help("typeL")").\n\nEjemplo en la consola de python:\n>>>from Manrod import mr\n>>>mr.randomLetter("lowercase")\na\n\nY con este formato pueden realizar con los otros valores que pide la funcion.')
 
-		if consulta == 'typeL':
-			print('\n--help$typeL-- El parametro "typeL" es requerido en las funciones "randomLetter" y "strOfLetters"; representa el tipo de letra que se utilizara para devolver el resultado final de la funcion.')
-			print('\nLos valores que se le pasan a este parametro son "lowercase", "uppercase" y "any", ademas de las concadenacion con numeros que se pueden hacer al resultado final en la funcion "strOfLetters" agregando a dichos parametros el "&number". Ej: typeL="uppercase&number".')
-			print('\n Al tipo de letra que hace referencia cada uno es:\n\n1."lowercase": Hace referencia a que el resultado retornado por la funcion va a ser en letras minusculas\n2."uppercase": Al igual que "lowercase", este devolvera el resultado en mayusculas.\n3."any": Este valor hace referencia a que el resultado sera cualquiera de los dos tipos de letras anteriores, el tipo de letra a usar sera elegido aleatoriamente.') 
+			if consulta == 'strOfLetters':
+				print('\n--help$strOfLetters-- La funcion "strOfLetters" a diferencia que "randomLetter" devuelve una cadena de letras aleatoria. A esta funcion se le pasa el parametro "typeL"(para mas informacion leer la documentacion o colocar "mr.help("typeL")") y opcionalmente el un rango de longitud que tendra la cadena, mas informacion ingrese "mr.help("rangeL")". Ejemplo en la consola de python:\n\nCon "lowercase":\n>>>from Manrod import mr\n>>>mr.strOfLetters("lowercase", rangeL=4)\nahgd\n\nCon "any":\n>>>mr.strOfLetters("any", rangeL=6)\nkJdSwO\n\nConcadenacion con numeros con "&number":\n>>>mr.strOfLetters("any&number", rangeL=6)\nfE3q5P\n\nEl rangeL puede colocarse o no. Mas informacion leer la documentacion o colocar "mr.help("rangeL")"')
+
+			if consulta == 'rSortingList':
+				print('\n--help$rSortingList-- La funcion "rSortingList" reordena de forma aleatoria una lista que se le sea suministrada o se le puede pasar un texto y devolvera una lista reordenada de forma aleatoria de ese texto. No se le puede pasar un numero, de ser ese el caso lanzara un error.\n\nEjemplo en la consola de python:\n\n>>>from Manrod import mr\n>>> test = ["test1", "test2", "test3"]\n>>> print(mr.rSortingList(test))\n["test3", "test1", "test2"]\n\nComo veran devuelve una lista ordenada en un orden aleatorio diferente a la lista original. Para esta funcion no es necesario ingresar algun parametro.')
+
+			if consulta == "rTake":
+				print('\n--help$rTake-- La funcion "rTake" selecciona una letra o tambien un conjunto de letras de un texto o lista que le suministremos. Se le puede suministrar dos parametros a esta funcion "rangeF" y "dOutput". \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion "mr.help("rangeF")" y "mr.help("dOutput")".')
+
+			#parametros de las funciones
+			if consulta == 'typeL':
+				print('\n--help$typeL-- El parametro "typeL" es requerido en las funciones "randomLetter" y "strOfLetters"; representa el tipo de letra que se utilizara para devolver el resultado final de la funcion.')
+				print('\nLos valores que se le pasan a este parametro son "lowercase", "uppercase" y "any", ademas de las concadenacion con numeros que se pueden hacer al resultado final en la funcion "strOfLetters" agregando a dichos parametros el "&number". Ej: typeL="uppercase&number".')
+				print('\n Al tipo de letra que hace referencia cada uno es:\n\n1."lowercase": Hace referencia a que el resultado retornado por la funcion va a ser en letras minusculas\n2."uppercase": Al igual que "lowercase", este devolvera el resultado en mayusculas.\n3."any": Este valor hace referencia a que el resultado sera cualquiera de los dos tipos de letras anteriores, el tipo de letra a usar sera elegido aleatoriamente.')
+
+			if consulta == 'rangeF':
+				print('\n--help$rangeF-- El parametro "rangeF" es requerido en la funcion "rTake", este parametro hace referencia al rango final de donde tomara las letras la funcion "rTake" , es decir, le damos un numero que representara hasta donde la funcion tomara letras para retornar el valor final.\n El valor que le demos a este parametro debe ser un numero, en caso que ingresemos un rango que sea mayor a la longitud del texto o lista que le suministramos a la funcion, dara un error.')
+
+			if consulta == "dOutput":
+				print('\n--help$dOutput-- El parametro "rangeF" es requerido en la funcion "rTake", este parametro hace referencia a como queremos que sea el valor retornado por la funcion. A este se le da dos valores "text" y "list".\n\n1."text": Si se coloca como valor de "dOutput" el valor retornado por la funcion sera un texto, independientemente si el el valor que ingresamos originalmente a la funcion es una lista o un texto.\n2."list": A diferencia de "text" el valor retornado sera en formato de una lista, sin importar el valor ingresado al principio en la funcion. Por defecto la funcion "rTake" retorna el valor en formato de texto.')
+
+			if consulta == "rangeL":
+				print('\n--help$rangeL-- El parametro "rangeL" es requerido en la funcion  "strOfLetters" y  hace referencia a el largo de la cadena de texto retornado por la funcion. Este mismo debe ser un numero. Por defecto el rangeL es un numero aleatorio entre el 2 y el 10.')
+
+		else:
+			raise ValueError('Debe ingresar un valor correcto a para recibir informacion. Para ver toda la informacion coloque un "?"')
