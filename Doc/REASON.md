@@ -43,4 +43,4 @@ Asi de facil es obtener una cadena de letras totalmente aleatoria hasta podemos 
 
 # ¿Por que se llama Manrod?
 
-Manrod es "Random" al reves. Esto es asi por que esta generado por unas de las funciones que proporcionara la libreria que reordena las palabras de un texto o lista que le suministremos.
+Manrod es la palabra "Random" pero en ordenada en forma aleatoria. Esto es asi por que esta generado por unas de las funciones que proporcionara la libreria que reordena las palabras de un texto o lista que le suministremos.
