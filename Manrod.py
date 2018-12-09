@@ -33,8 +33,9 @@ class mr:
 	def __init__(self):
 		super().__init__()
 
-	#Generacion de una letra aleatoria
+	
 	def randomLetter(typeL):
+		"""#Generacion de una letra aleatoria"""
 		if typeL == 'lowercase':
 			lttrRandom = _dict[0][randint(0, len(_dict[0]) - 1)]
 
@@ -50,9 +51,8 @@ class mr:
 
 		return lttrRandom
 
-	#Generacion de cadenas de texto aleatorias
 	def strOfLetters(typeL, **rangeL):
-		#miro si hay ingresado un rango si no lo hay le asigno uno aleatorio
+		"""#Generacion de cadenas de texto aleatorias"""
 		strLetter = ""
 		try:
 			if rangeL == {}:
@@ -95,7 +95,6 @@ class mr:
 
 		elif typeL == 'any&number':
 			for makeStr in range(0,i):
-				#hago que elija aleatoriamente que elemento agregar si letra o numero
 				listInd = (0, 1, 2)
 				randomList = listInd[randint(0,2)]
 
@@ -106,21 +105,21 @@ class mr:
 
 		return strLetter
 
-	#reordenamiento de una lista aleatoriamente
 	def rSortingList(lista):
-			if  str(lista).isdigit():
-				raise TypeError ('Ingrese un texto o una lista para su reordenamiento, no un numero. \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("rSortingList")')
+		"""#reordenamiento de una lista aleatoriamente"""
+		if  str(lista).isdigit():
+			raise TypeError ('Ingrese un texto o una lista para su reordenamiento, no un numero. \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("rSortingList")')
 			
-			listFinal = []
-			longList = len(lista)
-			for i in lista:
-				indexRand = randint(0, longList - 1)
-				listFinal.insert(indexRand , i)
+		listFinal = []
+		longList = len(lista)
+		for i in lista:
+			indexRand = randint(0, longList - 1)
+			listFinal.insert(indexRand , i)
 
-			return listFinal
+		return listFinal
 
-	#obtencion de un valor de una lista o un texto
 	def rTake(rValor, **kargs):
+		"""#obtencion de un valor de una lista o un texto"""
 		rangeIni = randint(0, len(rValor) - 1)
 		if kargs == {}:
 			menF = rValor[rangeIni]
@@ -212,6 +211,7 @@ class mr:
 			return menF
 
 	def help(consulta):
+		"""#funcion para que el usuario pueda obtener informacion"""
 		if consulta in ['?','randomLetter','strOfLetters','rSortingList','rTake','typeL','rangeF', 'rangeL','dOutput']:
 			if consulta == '?':
 				print('\n--help$all-- Las consultas que puede realizar aqui son: \n\nFunciones de la libreria:\n1."randomLetter"\n2."strOfLetters"\n3."rSortingList"\n4."rTake"\n\nParametros que requieren las funciones: \n5."typeL"\n6."rangoF"\n7."dOutput"\n8."rangeL"')
