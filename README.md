@@ -25,8 +25,9 @@ y listo tendremos instalado Manrod
 
 Una vez esto ya este hecho para importar la libreria a nuestro codigo para utilizarlo se hace de la siguiente manera:
 ```
-#Terminar cuando este subido a PyPi
+from Manrod.Manrod import mr
 ```
+Debe ser de esta manera sino no importara el core de la libreria
 
 ### Indice:
 
