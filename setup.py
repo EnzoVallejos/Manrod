@@ -6,8 +6,9 @@ setup(
   description = 'Manrod es una librería de código abierto que le permite generar palabras, frases, ordenar listas, entre otras funciones, de forma aleatoria.',
   author = 'Enzo Vallejos',
   author_email = 'shotkill791@gmail.com',
+  license='GNU General Public License v3.0',
   url = 'https://github.com/EnzoVallejos/Manrod',
   download_url = 'https://github.com/EnzoVallejos/Manrod/tarball/1.01',
   keywords = ['python', 'random', 'string', 'letters'],
-  classifiers = [],
+  classifiers = ['Programming Language :: Python :: 3.7'],
 )
