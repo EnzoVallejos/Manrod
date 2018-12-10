@@ -1,4 +1,4 @@
-Manrod v1.01
+Manrod v1.03
 Copyright (C) 2018 Enzo Vallejos
 
 This program is free software: you can redistribute it and/or modify
