@@ -20,7 +20,7 @@ __author__ = "Enzo Vallejos. User Github: EnzoVallejos y Gitlab: Enzo Vallejos"
 __copyright__ = "Copyright 2018, Enzo Vallejos"
 
 __license__ = "GNU General Public License v3.0"
-__version__ = "1.01"
+__version__ = "1.04"
 
 from random import randint
 
@@ -28,221 +28,216 @@ _dict = [['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 
 		['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
 		["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]]
 
-class mr:
-	"""Core v1.01 llamado mr de la libreria Manrod"""
-	def __init__(self):
-		super().__init__()
+"""Libreria de generacion de string, etc; de forma aleatoria"""	
+def random_lttr(lttr_case):
+	"""#Generacion de una letra aleatoria"""
+	if lttr_case == 'lowercase':
+		lttr_random = _dict[0][randint(0, len(_dict[0]) - 1)]
 
-	
-	def randomLetter(typeL):
-		"""#Generacion de una letra aleatoria"""
-		if typeL == 'lowercase':
-			lttrRandom = _dict[0][randint(0, len(_dict[0]) - 1)]
+	elif lttr_case == 'uppercase':
+		lttr_random = _dict[1][randint(0, len(_dict[1]) - 1)]
 
-		elif typeL == 'uppercase':
-			lttrRandom = _dict[1][randint(0, len(_dict[1]) - 1)]
+	elif lttr_case == "any":
+		listN = randint(0,1)
+		lttr_random = _dict[listN][randint(0, len(_dict[listN]) - 1)]
 
-		elif typeL == "any":
-			listN = randint(0,1)
-			lttrRandom = _dict[listN][randint(0, len(_dict[listN]) - 1)]
+	else:
+		raise TypeError('Ingrese un tipo de letra correcta("lowercase", "uppercase" or "any"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("lttr_case")')
 
+	return lttr_random
+
+def str_letters(lttr_case, **range_of_letters):
+	"""#Generacion de cadenas de texto aleatorias"""
+	str_letter = ""
+	try:
+		if range_of_letters == {}:
+			i = randint(2, 10)
 		else:
-			raise TypeError('Ingrese un tipo de letra correcta("lowercase", "uppercase" or "any"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("typeL")')
+			i = int(range_of_letters['range_of_letters'])
 
-		return lttrRandom
+	except ValueError:
+		raise ValueError('Ingrese un numero como rango no un texto. \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("Range")')
 
-	def strOfLetters(typeL, **rangeL):
-		"""#Generacion de cadenas de texto aleatorias"""
-		strLetter = ""
-		try:
-			if rangeL == {}:
-				i = randint(2, 10)
-			else:
-				i = int(rangeL['rangeL'])
+	if lttr_case == 'lowercase':
+		for makeStr in range(0,i):
+			str_letter += _dict[0][randint(0, len(_dict[0]) - 1)]
 
-		except ValueError:
-			raise ValueError('Ingrese un numero como rango no un texto. \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("Range")')
+	#concadenacion con numeros significa "&number"
+	elif lttr_case == 'lowercase&number':
+		for makeStr in range(0,i):
+			#hago que elija aleatoriamente que elemento agregar si letra o numero
+			listInd = (0, 2)
+			randomList = listInd[randint(0,1)]
 
-		if typeL == 'lowercase':
-			for makeStr in range(0,i):
-				strLetter += _dict[0][randint(0, len(_dict[0]) - 1)]
-
-		#concadenacion con numeros significa "&number"
-		elif typeL == 'lowercase&number':
-			for makeStr in range(0,i):
-				#hago que elija aleatoriamente que elemento agregar si letra o numero
-				listInd = (0, 2)
-				randomList = listInd[randint(0,1)]
-
-				strLetter += _dict[randomList][randint(0, len(_dict[randomList]) - 1)]
+			str_letter += _dict[randomList][randint(0, len(_dict[randomList]) - 1)]
 				
-		elif typeL == 'uppercase':
-			for makeStr in range(0,i):
-				strLetter += _dict[1][randint(0, len(_dict[1]) - 1)]
+	elif lttr_case == 'uppercase':
+		for makeStr in range(0,i):
+			str_letter += _dict[1][randint(0, len(_dict[1]) - 1)]
 
-		elif typeL == 'uppercase&number':
-			for makeStr in range(0,i):
-				#hago que elija aleatoriamente que elemento agregar si letra o numero
-				listInd = (1, 2)
-				randomList = listInd[randint(0,1)]
+	elif lttr_case == 'uppercase&number':
+		for makeStr in range(0,i):
+			#hago que elija aleatoriamente que elemento agregar si letra o numero
+			listInd = (1, 2)
+			randomList = listInd[randint(0,1)]
 
-				strLetter += _dict[randomList][randint(0, len(_dict[randomList]) - 1)]
+			str_letter += _dict[randomList][randint(0, len(_dict[randomList]) - 1)]
 
-		elif typeL == 'any':
-			for makeStr in range(0,i):
-				listN = randint(0,1)
-				strLetter += _dict[listN][randint(0, len(_dict[listN]) - 1)]
+	elif lttr_case == 'any':
+		for makeStr in range(0,i):
+			listN = randint(0,1)
+			str_letter += _dict[listN][randint(0, len(_dict[listN]) - 1)]
 
-		elif typeL == 'any&number':
-			for makeStr in range(0,i):
-				listInd = (0, 1, 2)
-				randomList = listInd[randint(0,2)]
+	elif lttr_case == 'any&number':
+		for makeStr in range(0,i):
+			listInd = (0, 1, 2)
+			randomList = listInd[randint(0,2)]
 
-				strLetter += _dict[randomList][randint(0, len(_dict[randomList]) - 1)]
+			str_letter += _dict[randomList][randint(0, len(_dict[randomList]) - 1)]
 
-		else:
-			raise TypeError('Ingrese un tipo de letra correcta("lowercase", "uppercase" y "any". O sus concadenaciones con "&number"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("typeL")')
+	else:
+		raise TypeError('Ingrese un tipo de letra correcta("lowercase", "uppercase" y "any". O sus concadenaciones con "&number"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("lttr_case")')
 
-		return strLetter
+	return str_letter
 
-	def rSortingList(lista):
-		"""#reordenamiento de una lista aleatoriamente"""
-		if  str(lista).isdigit():
-			raise TypeError ('Ingrese un texto o una lista para su reordenamiento, no un numero. \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("rSortingList")')
+def rSortingList(lista):
+	"""#reordenamiento de una lista aleatoriamente"""
+	if  str(lista).isdigit():
+		raise TypeError ('Ingrese un texto o una lista para su reordenamiento, no un numero. \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("rSortingList")')
 			
-		listFinal = []
-		longList = len(lista)
-		for i in lista:
+	listFinal = []
+	longList = len(lista)
+	for i in lista:
 			indexRand = randint(0, longList - 1)
 			listFinal.insert(indexRand , i)
 
-		return listFinal
+	return listFinal
 
-	def rTake(rValor, **kargs):
-		"""#obtencion de un valor de una lista o un texto"""
-		rangeIni = randint(0, len(rValor) - 1)
-		if kargs == {}:
-			menF = rValor[rangeIni]
-			return menF
+def rTake(rValor, **kargs):
+	"""#obtencion de un valor de una lista o un texto"""
+	rangeIni = randint(0, len(rValor) - 1)
+	if kargs == {}:
+		menF = rValor[rangeIni]
+		return menF
 
-		#por si el argumento pasado es 'dOutput' o 'rangeF'
-		elif len(kargs) == 1:
-			args = [i for i in kargs if i in ['dOutput', 'rangeF']] 
+	#por si el argumento pasado es 'dOutput' o 'rangeF'
+	elif len(kargs) == 1:
+		args = [i for i in kargs if i in ['dOutput', 'rangeF']] 
 
-			if args == []:
-				raise TypeError('Ingrese un parametro correcto("dOutput" o "rangeF"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
+		if args == []:
+			raise TypeError('Ingrese un parametro correcto("dOutput" o "rangeF"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
 			
-			#si el argumento ingresado es 'dOutput' y el parametro es 'text' o 'list'
-			if args[0] == 'dOutput' and kargs['dOutput'] in ['text', 'list']:
-				if kargs['dOutput'] == 'text':
-					rValor = str(rValor)
-					menF = rValor[rangeIni]
-				else:
-					if kargs['dOutput'] == 'list':
-						rValor = str(rValor)
-						menlist = [k for k in rValor]
-						menF = menlist[rangeIni: rangeIni + 1]
-				return menF			
-
-			else:
-				if args[0] == 'rangeF':
-					rangeF = kargs['rangeF']
-
-					#filtro de comprobacion de errores par saber si el rangoF es valido
-					if str(rangeF).isdigit() is not False:
-						if rangeF > len(rValor):
-							raise ValueError('El rango final ingresado es mas grande que la longitud de la cadena')
-					else:
-						raise ValueError('El rango final ingresado debe ser un numero no un texto.')
-
-					if rangeIni > rangeF:
-						rangeIniNew = rangeIni
-						while rangeIniNew > rangeF:
-							rangeIniNew = randint(0, len(rValor) - 1)
-					else:
-						rangeIniNew = rangeIni
-
-					menF = rValor[rangeIniNew:rangeF]
-					return menF
-
-				else:
-					raise ValueError('Ingrese un valor correcto para los parametros ("dOutput" o "rangeF"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
-
-		#si hay 2 argumentos ingresados
-		elif len(kargs) == 2:
-			args = [i for i in kargs if i in ['rangeF', 'dOutput']]
-			
-			if  len(args) < 2:
-				raise TypeError('Ingrese parametros correctos ("dOutput" o "rangeF"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
-			else:
-				if args[1] == 'rangeF':
-					raise NameError('A ingresado los parametros de forma incorrecta. \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
-
-			if args[1] == 'dOutput' and kargs['dOutput'] in ['text', 'list']:
-				rangeF = kargs['rangeF']
-				dOutput = kargs['dOutput']
-			else:
-				raise ValueError('Ingrese un valor correcto para el parametro "dOutput". \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
-
-			if str(rangeF).isdigit() is not False:
-				if rangeF > len(rValor):
-					raise ValueError('El rango final ingresado es mas grande que la longitud de la cadena')
-			else:
-				raise ValueError('El rango final ingresado debe ser un numero no un texto.')
-
-			#filtros de comprobaciones
-			if rangeIni > rangeF:
-				rangeIniNew = rangeIni
-				while rangeIniNew > rangeF:
-					rangeIniNew = randint(0, len(rValor) - 1)
-			else:
-				rangeIniNew = rangeIni
-
-			menParcial = rValor[rangeIniNew:rangeF]
-
+		#si el argumento ingresado es 'dOutput' y el parametro es 'text' o 'list'
+		if args[0] == 'dOutput' and kargs['dOutput'] in ['text', 'list']:
 			if kargs['dOutput'] == 'text':
-				menF = menParcial
+				rValor = str(rValor)
+				menF = rValor[rangeIni]
 			else:
 				if kargs['dOutput'] == 'list':
 					rValor = str(rValor)
-					menlist = [k for k in menParcial]
-					menF = menlist
-			
-			return menF
-
-	def help(consulta):
-		"""#funcion para que el usuario pueda obtener informacion"""
-		if consulta in ['?','randomLetter','strOfLetters','rSortingList','rTake','typeL','rangeF', 'rangeL','dOutput']:
-			if consulta == '?':
-				print('\n--help$all-- Las consultas que puede realizar aqui son: \n\nFunciones de la libreria:\n1."randomLetter"\n2."strOfLetters"\n3."rSortingList"\n4."rTake"\n\nParametros que requieren las funciones: \n5."typeL"\n6."rangoF"\n7."dOutput"\n8."rangeL"')
-
-			#funciones de la libreria
-			if consulta == 'randomLetter':
-				print('\n--help$randomLetter-- La funcion "randomLetter" devuelve una letra elegida aleatoriamente. A dicha funcion se le debe pasar el parametro "typeL"(para mas informacion leer la documentacion o colocar "mr.help("typeL")").\n\nEjemplo en la consola de python:\n>>>from Manrod import mr\n>>>mr.randomLetter("lowercase")\na\n\nY con este formato pueden realizar con los otros valores que pide la funcion.')
-
-			if consulta == 'strOfLetters':
-				print('\n--help$strOfLetters-- La funcion "strOfLetters" a diferencia que "randomLetter" devuelve una cadena de letras aleatoria. A esta funcion se le pasa el parametro "typeL"(para mas informacion leer la documentacion o colocar "mr.help("typeL")") y opcionalmente el un rango de longitud que tendra la cadena, mas informacion ingrese "mr.help("rangeL")". Ejemplo en la consola de python:\n\nCon "lowercase":\n>>>from Manrod import mr\n>>>mr.strOfLetters("lowercase", rangeL=4)\nahgd\n\nCon "any":\n>>>mr.strOfLetters("any", rangeL=6)\nkJdSwO\n\nConcadenacion con numeros con "&number":\n>>>mr.strOfLetters("any&number", rangeL=6)\nfE3q5P\n\nEl rangeL puede colocarse o no. Mas informacion leer la documentacion o colocar "mr.help("rangeL")"')
-
-			if consulta == 'rSortingList':
-				print('\n--help$rSortingList-- La funcion "rSortingList" reordena de forma aleatoria una lista que se le sea suministrada o se le puede pasar un texto y devolvera una lista reordenada de forma aleatoria de ese texto. No se le puede pasar un numero, de ser ese el caso lanzara un error.\n\nEjemplo en la consola de python:\n\n>>>from Manrod import mr\n>>> test = ["test1", "test2", "test3"]\n>>> print(mr.rSortingList(test))\n["test3", "test1", "test2"]\n\nComo veran devuelve una lista ordenada en un orden aleatorio diferente a la lista original. Para esta funcion no es necesario ingresar algun parametro.')
-
-			if consulta == "rTake":
-				print('\n--help$rTake-- La funcion "rTake" selecciona una letra o tambien un conjunto de letras de un texto o lista que le suministremos. Se le puede suministrar dos parametros a esta funcion "rangeF" y "dOutput". \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion "mr.help("rangeF")" y "mr.help("dOutput")".\n\nEjemplo en la consola de python:\n\n>>>from Manrod import mr\n>>> print(mr.rTake("test12345"))\n1\n\nEjemplo con "rangeF":\n>>>from Manrod import mr\n>>> print(mr.rTake("test12345", rangeF=3))\nest\n\nEjemplo con "dOutput":\n>>>from Manrod import mr\n>>> print(mr.rTake("test12345", dOutput="list"))\n["e"]\n\nEjemplo con ambos parametros:\n>>>from Manrod import mr\n>>> print(mr.rTake("test12345", rangoF=4, dOutput="list"))\n["t", "e", "s", "t"]\n\nEl "rangeF" debe ser un numero entero y "dOutput" se le debe pasar un valor valido, mas informacion de este parametro leer la documentacion o colocar "mr.help("dOutput")"')
-
-			#parametros de las funciones
-			if consulta == 'typeL':
-				print('\n--help$typeL-- El parametro "typeL" es requerido en las funciones "randomLetter" y "strOfLetters"; representa el tipo de letra que se utilizara para devolver el resultado final de la funcion.')
-				print('\nLos valores que se le pasan a este parametro son "lowercase", "uppercase" y "any", ademas de las concadenacion con numeros que se pueden hacer al resultado final en la funcion "strOfLetters" agregando a dichos parametros el "&number". Ej: typeL="uppercase&number".')
-				print('\n Al tipo de letra que hace referencia cada uno es:\n\n1."lowercase": Hace referencia a que el resultado retornado por la funcion va a ser en letras minusculas\n2."uppercase": Al igual que "lowercase", este devolvera el resultado en mayusculas.\n3."any": Este valor hace referencia a que el resultado sera cualquiera de los dos tipos de letras anteriores, el tipo de letra a usar sera elegido aleatoriamente.')
-
-			if consulta == 'rangeF':
-				print('\n--help$rangeF-- El parametro "rangeF" es requerido en la funcion "rTake", este parametro hace referencia al rango final de donde tomara las letras la funcion "rTake" , es decir, le damos un numero que representara hasta donde la funcion tomara letras para retornar el valor final.\n El valor que le demos a este parametro debe ser un numero, en caso que ingresemos un rango que sea mayor a la longitud del texto o lista que le suministramos a la funcion, dara un error.')
-
-			if consulta == "dOutput":
-				print('\n--help$dOutput-- El parametro "dOutput" es requerido en la funcion "rTake", este parametro hace referencia a como queremos que sea el valor retornado por la funcion. A este se le da dos valores "text" y "list".\n\n1."text": Si se coloca como valor de "dOutput" el valor retornado por la funcion sera un texto, independientemente si el el valor que ingresamos originalmente a la funcion es una lista o un texto.\n2."list": A diferencia de "text" el valor retornado sera en formato de una lista, sin importar el valor ingresado al principio en la funcion. Por defecto la funcion "rTake" retorna el valor en formato de texto.')
-
-			if consulta == "rangeL":
-				print('\n--help$rangeL-- El parametro "rangeL" es requerido en la funcion  "strOfLetters" y  hace referencia a el largo de la cadena de texto retornado por la funcion. Este mismo debe ser un numero. Por defecto el rangeL es un numero aleatorio entre el 2 y el 10.')
+					menlist = [k for k in rValor]
+					menF = menlist[rangeIni: rangeIni + 1]
+			return menF			
 
 		else:
-			raise ValueError('Debe ingresar un valor correcto a para recibir informacion. Para ver toda la informacion coloque un "?"')
+			if args[0] == 'rangeF':
+				rangeF = kargs['rangeF']
+
+				#filtro de comprobacion de errores par saber si el rangoF es valido
+				if str(rangeF).isdigit() is not False:
+					if rangeF > len(rValor):
+						raise ValueError('El rango final ingresado es mas grande que la longitud de la cadena')
+				else:
+					raise ValueError('El rango final ingresado debe ser un numero no un texto.')
+
+				if rangeIni > rangeF:
+					rangeIniNew = rangeIni
+					while rangeIniNew > rangeF:
+							rangeIniNew = randint(0, len(rValor) - 1)
+				else:
+					rangeIniNew = rangeIni
+
+				menF = rValor[rangeIniNew:rangeF]
+				return menF
+
+			else:
+				raise ValueError('Ingrese un valor correcto para los parametros ("dOutput" o "rangeF"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
+
+	#si hay 2 argumentos ingresados
+	elif len(kargs) == 2:
+		args = [i for i in kargs if i in ['rangeF', 'dOutput']]
+			
+		if  len(args) < 2:
+			raise TypeError('Ingrese parametros correctos ("dOutput" o "rangeF"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
+		else:
+			if args[1] == 'rangeF':
+				raise NameError('A ingresado los parametros de forma incorrecta. \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
+
+		if args[1] == 'dOutput' and kargs['dOutput'] in ['text', 'list']:
+			rangeF = kargs['rangeF']
+			dOutput = kargs['dOutput']
+		else:
+			raise ValueError('Ingrese un valor correcto para el parametro "dOutput". \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("TakeParams")')
+
+		if str(rangeF).isdigit() is not False:
+			if rangeF > len(rValor):
+				raise ValueError('El rango final ingresado es mas grande que la longitud de la cadena')
+		else:
+			raise ValueError('El rango final ingresado debe ser un numero no un texto.')
+
+		#filtros de comprobaciones
+		if rangeIni > rangeF:
+			rangeIniNew = rangeIni
+			while rangeIniNew > rangeF:
+				rangeIniNew = randint(0, len(rValor) - 1)
+		else:
+			rangeIniNew = rangeIni
+
+		menParcial = rValor[rangeIniNew:rangeF]
+
+		if kargs['dOutput'] == 'text':
+			menF = menParcial
+		else:
+			if kargs['dOutput'] == 'list':
+				rValor = str(rValor)
+				menlist = [k for k in menParcial]
+				menF = menlist
+			
+		return menF
+
+def help(consulta):
+	"""#funcion para que el usuario pueda obtener informacion"""
+	if consulta in ['?','random_lttr','str_letters','rSortingList','rTake','lttr_case','rangeF', 'range_of_letters','dOutput']:
+		if consulta == '?':
+			print('\n--help$all-- Las consultas que puede realizar aqui son: \n\nFunciones de la libreria:\n1."randomLetter"\n2."strOfLetters"\n3."rSortingList"\n4."rTake"\n\nParametros que requieren las funciones: \n5."lttr_case"\n6."rangoF"\n7."dOutput"\n8."range_of_letters"')
+
+		#funciones de la libreria
+		if consulta == 'random_lttr':
+			print('\n--help$randomLetter-- La funcion "randomLetter" devuelve una letra elegida aleatoriamente. A dicha funcion se le debe pasar el parametro "lttr_case"(para mas informacion leer la documentacion o colocar "mr.help("lttr_case")").\n\nEjemplo en la consola de python:\n>>>from Manrod import mr\n>>>mr.randomLetter("lowercase")\na\n\nY con este formato pueden realizar con los otros valores que pide la funcion.')
+
+		if consulta == 'str_letters':
+			print('\n--help$strOfLetters-- La funcion "strOfLetters" a diferencia que "randomLetter" devuelve una cadena de letras aleatoria. A esta funcion se le pasa el parametro "lttr_case"(para mas informacion leer la documentacion o colocar "mr.help("lttr_case")") y opcionalmente el un rango de longitud que tendra la cadena, mas informacion ingrese "mr.help("range_of_letters")". Ejemplo en la consola de python:\n\nCon "lowercase":\n>>>from Manrod import mr\n>>>mr.strOfLetters("lowercase", range_of_letters=4)\nahgd\n\nCon "any":\n>>>mr.strOfLetters("any", range_of_letters=6)\nkJdSwO\n\nConcadenacion con numeros con "&number":\n>>>mr.strOfLetters("any&number", range_of_letters=6)\nfE3q5P\n\nEl range_of_letters puede colocarse o no. Mas informacion leer la documentacion o colocar "mr.help("range_of_letters")"')
+
+		if consulta == 'rSortingList':
+			print('\n--help$rSortingList-- La funcion "rSortingList" reordena de forma aleatoria una lista que se le sea suministrada o se le puede pasar un texto y devolvera una lista reordenada de forma aleatoria de ese texto. No se le puede pasar un numero, de ser ese el caso lanzara un error.\n\nEjemplo en la consola de python:\n\n>>>from Manrod import mr\n>>> test = ["test1", "test2", "test3"]\n>>> print(mr.rSortingList(test))\n["test3", "test1", "test2"]\n\nComo veran devuelve una lista ordenada en un orden aleatorio diferente a la lista original. Para esta funcion no es necesario ingresar algun parametro.')
+
+		if consulta == "rTake":
+			print('\n--help$rTake-- La funcion "rTake" selecciona una letra o tambien un conjunto de letras de un texto o lista que le suministremos. Se le puede suministrar dos parametros a esta funcion "rangeF" y "dOutput". \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion "mr.help("rangeF")" y "mr.help("dOutput")".\n\nEjemplo en la consola de python:\n\n>>>from Manrod import mr\n>>> print(mr.rTake("test12345"))\n1\n\nEjemplo con "rangeF":\n>>>from Manrod import mr\n>>> print(mr.rTake("test12345", rangeF=3))\nest\n\nEjemplo con "dOutput":\n>>>from Manrod import mr\n>>> print(mr.rTake("test12345", dOutput="list"))\n["e"]\n\nEjemplo con ambos parametros:\n>>>from Manrod import mr\n>>> print(mr.rTake("test12345", rangoF=4, dOutput="list"))\n["t", "e", "s", "t"]\n\nEl "rangeF" debe ser un numero entero y "dOutput" se le debe pasar un valor valido, mas informacion de este parametro leer la documentacion o colocar "mr.help("dOutput")"')
+
+		#parametros de las funciones
+		if consulta == 'lttr_case':
+			print('\n--help$lttr_case-- El parametro "lttr_case" es requerido en las funciones "randomLetter" y "strOfLetters"; representa el tipo de letra que se utilizara para devolver el resultado final de la funcion.')
+			print('\nLos valores que se le pasan a este parametro son "lowercase", "uppercase" y "any", ademas de las concadenacion con numeros que se pueden hacer al resultado final en la funcion "strOfLetters" agregando a dichos parametros el "&number". Ej: lttr_case="uppercase&number".')
+			print('\n Al tipo de letra que hace referencia cada uno es:\n\n1."lowercase": Hace referencia a que el resultado retornado por la funcion va a ser en letras minusculas\n2."uppercase": Al igual que "lowercase", este devolvera el resultado en mayusculas.\n3."any": Este valor hace referencia a que el resultado sera cualquiera de los dos tipos de letras anteriores, el tipo de letra a usar sera elegido aleatoriamente.')
+
+		if consulta == 'rangeF':
+			print('\n--help$rangeF-- El parametro "rangeF" es requerido en la funcion "rTake", este parametro hace referencia al rango final de donde tomara las letras la funcion "rTake" , es decir, le damos un numero que representara hasta donde la funcion tomara letras para retornar el valor final.\n El valor que le demos a este parametro debe ser un numero, en caso que ingresemos un rango que sea mayor a la longitud del texto o lista que le suministramos a la funcion, dara un error.')
+
+		if consulta == "dOutput":
+			print('\n--help$dOutput-- El parametro "dOutput" es requerido en la funcion "rTake", este parametro hace referencia a como queremos que sea el valor retornado por la funcion. A este se le da dos valores "text" y "list".\n\n1."text": Si se coloca como valor de "dOutput" el valor retornado por la funcion sera un texto, independientemente si el el valor que ingresamos originalmente a la funcion es una lista o un texto.\n2."list": A diferencia de "text" el valor retornado sera en formato de una lista, sin importar el valor ingresado al principio en la funcion. Por defecto la funcion "rTake" retorna el valor en formato de texto.')
+
+		if consulta == "range_of_letters":
+			print('\n--help$range_of_letters-- El parametro "range_of_letters" es requerido en la funcion  "strOfLetters" y  hace referencia a el largo de la cadena de texto retornado por la funcion. Este mismo debe ser un numero. Por defecto el range_of_letters es un numero aleatorio entre el 2 y el 10.')
+
+	else:
+		raise ValueError('Debe ingresar un valor correcto a para recibir informacion. Para ver toda la informacion coloque un "?"')
