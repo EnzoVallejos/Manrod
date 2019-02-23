@@ -1,3 +1,3 @@
-from Manrod import str_letters
+from Manrod import *
 
-print(str_letters("any&number"))
+print(help("?"))
