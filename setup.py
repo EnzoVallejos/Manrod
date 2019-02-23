@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'Manrod',
   packages = ['Manrod'],
-  version = '1.03',
+  version = '1.04',
   description = 'Manrod es una librería de código abierto que le permite generar palabras, frases, ordenar listas, entre otras funciones, de forma aleatoria.',
   author = 'Enzo Vallejos',
   author_email = 'shotkill791@gmail.com',
