@@ -5,7 +5,7 @@
 
 **Lenguaje utilizado: Python**
 
-**Version: 1.0.4(Es representada con 1.04 para abreviar)**
+**Version: 1.0.5(Es representada con 1.05 para abreviar)**
 
 **Licencia: "GNU General Public License v3.0"**
 
