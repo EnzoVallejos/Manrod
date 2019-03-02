@@ -20,26 +20,26 @@ Desarrolle esta libreria por que queria darle una solucion rapida y facil a los 
 
 # ¿Por que usar Manrod?
 
-Por que es facil de obtener un resultado que tenga que ver con una letras o una cadena de letras generadas de forma aleatoria, con esta libreria. basicamente es importar la libreria, llamar a la funcion que desea ejecutar y pasarle un parametro o mas si desea un resultado mas concreto(esto esta descrito en la documentacion **Doc\README.md**) y listo.
+Por que es facil de obtener un resultado que tenga que ver con una letras o una cadena de letras generadas de forma aleatoria, con esta libreria. basicamente es importar la libreria, llamar a la funcion que desea ejecutar y pasarle un parametro o mas si desea un resultado mas concreto(esto esta descrito en la documentacion **README.md**) y listo.
 
 Un ejemplo de lo facil que es obtener un resultado con esta libreria es el siguiente:
 ```
-print(mr.strOfLetters(typeL="any"))
+print(strOfLetters(lttr_case="any"))
 ```
-Esto nos devolvera el siguiente resultado, el para metro que le pase a la funcion llamado "typeL" hace referencia al tipo de letra que devolvera, pueden ver mas de esto en la documentacion.
+Esto nos devolvera el siguiente resultado, el para metro que le pase a la funcion llamado "lttr_case" hace referencia al tipo de letra que devolvera, pueden ver mas de esto en la documentacion.
 ```
 aUIldH
 ```
-Para ser mas especificos podemos pasarle otro parametro a esta funcion que es "rangeL" que dice que tan larga sera la cadena que retornara la funcion, es de la siguiente manera:
+Para ser mas especificos podemos pasarle otro parametro a esta funcion que es "range_of_letters" que dice que tan larga sera la cadena que retornara la funcion, es de la siguiente manera:
 ```
-print(mr.strOfLetters(typeL="any", rangeL=6))
+print(strOfLetters(lttr_case="any", range_of_letters=6))
 ```
 El resultado de esto seria una cadena de 6 letras
 ```
 DqPkNd
 ```
 
-Asi de facil es obtener una cadena de letras totalmente aleatoria hasta podemos a hacer concadenaciones con numeros agregando a el valor que pasemos en "typeL" un "&number". Todo esto esta es la documentacion.
+Asi de facil es obtener una cadena de letras totalmente aleatoria hasta podemos a hacer concadenaciones con numeros agregando a el valor que pasemos en "lttr_case" un "&number". Todo esto esta es la documentacion.
 
 # ¿Por que se llama Manrod?
 
