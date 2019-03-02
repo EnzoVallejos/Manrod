@@ -8,7 +8,6 @@ setup(
   author_email = 'shotkill791@gmail.com',
   license='GNU General Public License v3.0',
   url = 'https://github.com/EnzoVallejos/Manrod',
-  download_url = 'https://github.com/EnzoVallejos/Manrod/tarball/v1.01-stable',
   keywords = ['python', 'random', 'string', 'letters'],
   classifiers = ['Programming Language :: Python :: 3 :: Python :: 3.5 :: Python :: 3.6 :: Python :: 3.7'],
 )
