@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-#Manrod v1.03
+#Manrod v1.1
 #Copyright (C) 2018 Enzo Vallejos
 
 #This program is free software: you can redistribute it and/or modify
