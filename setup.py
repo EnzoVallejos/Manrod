@@ -6,7 +6,7 @@ with open('README.md') as f:
 
 setup(
   name = 'Manrod',
-  version = '1.0.5',
+  version = '1.0.6',
   description="Manrod es una librería de código abierto que le permite generar palabras, frases, ordenar listas, entre otras funciones, de forma aleatoria",
   long_description=long_description,
   long_description_content_type='text/markdown',

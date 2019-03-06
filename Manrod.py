@@ -20,7 +20,7 @@ __author__ = "Enzo Vallejos. User Github: EnzoVallejos y Gitlab: Enzo Vallejos"
 __copyright__ = "Copyright 2018, Enzo Vallejos"
 
 __license__ = "GNU General Public License v3.0"
-__version__ = "1.05"
+__version__ = "1.06"
 
 from random import randint
 
