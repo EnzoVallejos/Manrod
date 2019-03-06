@@ -11,7 +11,7 @@
 
 **Descripcion de la libreria: Manrod es una librería de código abierto escrito en python que permite generar palabras, frases, ordenar listas, entre otras funciones, de forma aleatoria.**
 
-## --Documentacion de la libreria "Manrod v1.03":--
+## --Documentacion de la libreria "Manrod v1.06":--
 
 ### Importacion de la libreria
 Para importar la libreria es muy facil, primera hay que tener intalado la libreria desde el pip de python. Se instala de la siguiente manera:
