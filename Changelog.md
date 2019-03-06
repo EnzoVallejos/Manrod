@@ -1,6 +1,6 @@
-# Manrod version 1.0.6
+# Manrod version 1.1
 
-## Cambios version 1.0.6:
+## Cambios version 1.1:
 - Renombramiento de variables y funciones: se renombro una gran parte de las variables e funciones para mejor legibilidad.
 - Cambio de la forma de importar la libreria: antes de esta version la forma de importar la libreria era de esta forma
 ```
