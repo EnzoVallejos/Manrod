@@ -205,6 +205,29 @@ def rTake(range_valor, **kargs):
 			
 		return menF
 
+def array_random(lttr_case, row, column):
+	try:
+		import numpy as np
+	except:
+		raise ImportError("para usar esta opcion debe tener instalado numpy")
+
+
+	if lttr_case in ["lowercase", "lowercase&number", "uppercase", "uppercase&number", "any", "any&number"]:
+		column_generated = []
+		array_final = []
+
+		if lttr_case == "lowercase":
+			for columna in range(column):
+				for fila in range(row):
+					column_generated.append(_dict[0][randint(0,len(_dict[0]) - 1)])
+
+				array_final.append(column_generated)
+				column_generated = []
+
+		return np.array(array_final)
+	else:
+		raise ValueError('Ingrese un tipo de letra correcta("lowercase", "uppercase" y "any". O sus concadenaciones con "&number"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("lttr_case")')
+
 def help(consulta):
 	"""#funcion para que el usuario pueda obtener informacion"""
 	if consulta in ['?','random_lttr','str_letters','rSortingList','rTake','lttr_case','final_range', 'range_of_letters','data_out_format']:
