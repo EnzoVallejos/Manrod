@@ -224,7 +224,26 @@ def array_random(lttr_case, row, column):
 				array_final.append(column_generated)
 				column_generated = []
 
+		elif lttr_case == "uppercase":
+			for columna in range(column):
+				for fila in range(row):
+					column_generated.append(_dict[1][randint(0,len(_dict[1]) - 1)])
+
+				array_final.append(column_generated)
+				column_generated = []
+
+		elif lttr_case == "any":
+			for columna in range(column):
+				for fila in range(row):
+					column_generated.append(_dict[randint(0,1)][randint(0,len(_dict[randint(0,1)]) - 1)])
+
+				array_final.append(column_generated)
+				column_generated = []
+
 		return np.array(array_final)
+
+		return np.array(array_final)
+
 	else:
 		raise ValueError('Ingrese un tipo de letra correcta("lowercase", "uppercase" y "any". O sus concadenaciones con "&number"). \nPara mas informacion revise la documentacion o puede ver mas informacion con la funcion mr.help("lttr_case")')
 

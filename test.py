@@ -1,3 +1,3 @@
 from Manrod import array_random
 
-print(array_random("uppercase", 4, 6))
+print(array_random("any", 3, 3))
