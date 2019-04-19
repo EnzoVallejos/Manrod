@@ -251,6 +251,28 @@ def array_random(lttr_case, row, column):
 				array_final.append(column_generated)
 				column_generated = []
 
+		elif lttr_case == "uppercase&number":
+			for columna in range(column):
+				list_index = (1,2)
+				list_index_choice = list_index[randint(0,1)]
+				
+				for fila in range(row):
+					column_generated.append(_dict[list_index_choice][randint(0,len(_dict[list_index_choice]) - 1)])
+
+				array_final.append(column_generated)
+				column_generated = []
+
+		elif lttr_case == "any&number":
+			for columna in range(column):
+				list_index = [0,1,2]
+				list_index_choice = list_index[randint(0,2)]
+				
+				for fila in range(row):
+					column_generated.append(_dict[list_index_choice][randint(0,len(_dict[list_index_choice]) - 1)])
+
+				array_final.append(column_generated)
+				column_generated = []
+
 		return np.array(array_final)
 
 	else:
