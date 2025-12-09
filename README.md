@@ -38,7 +38,7 @@ Debe ser de esta manera sino no importara el core de la libreria
 - rTake
 
 #### Parametros que requieren las funciones:
-- lttr_case
+- lttr_caseiiiiii
 - final_range
 - data_out_format
 - range_of_letters
